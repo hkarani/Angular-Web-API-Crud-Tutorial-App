@@ -17,7 +17,7 @@ builder.Services.AddCors(options => options.AddPolicy(
 	name: "SuperHeroOrigins",
 	policy =>
 	{
-		policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyHeader();
+		policy.WithOrigins("http://localhost:5261","http://localhost:4200").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 	})
 );
 
