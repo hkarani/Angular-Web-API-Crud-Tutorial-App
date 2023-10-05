@@ -24,7 +24,9 @@ export class SuperHeroService {
   }
 
   deleteSuperHero(hero: SuperHero) : Observable<SuperHero[]> {
-    return this.http.delete<SuperHero[]>(`${environment.apiUrl}/${this.url}/${hero.id}`);
+    return this.http.delete<SuperHero[]>(
+      `${environment.apiUrl}/${this.url}/${hero.id}`
+      );
   }
 
 }
