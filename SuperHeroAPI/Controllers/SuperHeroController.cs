@@ -11,7 +11,8 @@ namespace SuperHeroAPI.Controllers
 	{
 		private readonly DataContext _context;
 
-		public SuperHeroController(DataContext context) { 
+		public SuperHeroController(DataContext context)
+		{
 			_context = context;
 		}
 
@@ -20,5 +21,14 @@ namespace SuperHeroAPI.Controllers
 		{
 			return Ok(await _context.SuperHeroes.ToListAsync());
 		}
+
+		[HttpPost]
+		public async Task<ActionResult<List<SuperHero>>> CreateSuperHero(SuperHero hero)
+		{
+			_context.SuperHeroes.Add(hero);
+			await _context.SaveChangesAsync();
+			return Ok(await _context.SuperHeroes.ToListAsync());
+		}
+
 	}
 }	
