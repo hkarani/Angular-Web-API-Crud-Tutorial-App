@@ -7,6 +7,7 @@ import { SuperHeroService } from './services/super-hero.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'SuperHero.UI';
   heroes: SuperHero[] = [];
@@ -17,6 +18,10 @@ export class AppComponent {
   ngOnInit(): void {
    this.superHeroService.getSuperHeroes()
    .subscribe((result: SuperHero[]) => (this.heroes = result));   
+  }
+
+  updateHeroList(heroes: SuperHero []){
+    this.heroes = heroes; 
   }
 
   initNewHero(){
