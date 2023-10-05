@@ -14,5 +14,13 @@ export class SuperHeroService {
   getSuperHeroes() : Observable<SuperHero[]> {
     return this.http.get<SuperHero[]>(`${environment.apiUrl}/${this.url}`);
   }
+
+  updateHero(hero: SuperHero) : Observable<SuperHero[]> {
+    return this.http.put<SuperHero[]>(`${environment.apiUrl}/${this.url}`, hero);
+  }
+
+  createHero(hero: SuperHero) : Observable<SuperHero[]> {
+    return this.http.post<SuperHero[]>(`${environment.apiUrl}/${this.url}`, hero);
+  }
 }
 

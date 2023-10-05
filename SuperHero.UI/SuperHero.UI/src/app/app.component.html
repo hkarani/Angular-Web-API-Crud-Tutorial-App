@@ -1,9 +1,12 @@
+<button (click)="initNewHero()">Create New Hero</button>
+
 <table>
   <thead>
     <th>Name</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Place</th>
+    <th></th>
   </thead>
 
   <tbody>
@@ -11,7 +14,10 @@
       <td>{{ hero.name }}</td>
       <td>{{ hero.firstName }}</td>
       <td>{{ hero.lastName}}</td>
-      <td>{{ hero.place }}</td>      
+      <td>{{ hero.place }}</td>
+      <th><button (click)="editHero(hero)" >Edit</button></th>      
     </tr>
   </tbody>
 </table>
+
+<app-edit-hero [hero]="heroToEdit"></app-edit-hero>
