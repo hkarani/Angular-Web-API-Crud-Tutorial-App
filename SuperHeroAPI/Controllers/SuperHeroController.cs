@@ -39,9 +39,21 @@ namespace SuperHeroAPI.Controllers
 
 			dbHero.Name = hero.Name;
 			dbHero.FirstName = hero.FirstName;
-			dbHero.LastName	= hero.LastName;
+			dbHero.LastName = hero.LastName;
 			dbHero.Place = hero.Place;
 
+			await _context.SaveChangesAsync();
+			return Ok(await _context.SuperHeroes.ToListAsync());
+		}
+
+		[HttpDelete("{id}")]
+		public async Task<ActionResult<List<SuperHero>>> DeleteSuperHero(int id)
+		{
+			var dbHero = await _context.SuperHeroes.FindAsync(id);
+			if (dbHero == null)
+				return BadRequest("Hero Not Found");
+
+			_context.SuperHeroes.Remove(dbHero);
 			await _context.SaveChangesAsync();
 			return Ok(await _context.SuperHeroes.ToListAsync());
 		}
